@@ -1,6 +1,7 @@
 import tkinter as tk
 from page import Page
 from selenium import webdriver
+import platform
 
 class Page1(Page):
     def __init__(self, *args, **kwargs):
@@ -18,7 +19,14 @@ class Page1(Page):
         start_letter = 'P'
 
         def queryWebsite():
-            PATH = "./chromedriver"
+
+            PATH = ""
+            print(platform.system())
+            if(platform.system() == "Windows"):
+                PATH = "./chromedriver.exe"
+            if(platform.system() == "Linux"):
+                PATH = "./chromedriver"
+            print(PATH)
             driver = webdriver.Chrome(PATH)
             for page in range(1, 4, 1):
                 driver.get("https://www.fishersci.com/us/en/catalog/search/products?keyword=pluriselect&page=" + str(page))

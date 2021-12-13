@@ -20,77 +20,42 @@ class Page3(Page):
         Page.__init__(self, *args, **kwargs)
 
         ImgLabel = tk.Label(self, text="IMAGE SCRAPER")
-        ImgLabel.place(width=145, height=20, relx=0.5, rely=.05)
+        ImgLabel.place(width=145, height=20, relx=0.45, rely=.025)
 
         L1 = tk.Label(self, borderwidth=2, relief='sunken', text="enter name for local folder")
-        L1.place(width=160, height=20, relx=0.08, rely=.1)
+        L1.place(width=200, height=20, relx=0.05, rely=.1)
         E1 = tk.Entry(self, bd =2)
-        E1.place (relwidth=0.45, height=20, relx=0.35, rely=.1)
+        E1.place (relwidth=0.45, height=20, relx=0.36, rely=.1)
 
 
         L2 = tk.Label(self, borderwidth=2, relief='sunken', text="enter wikipedia url here")
-        L2.place(width=160, height=20, relx=0.08, rely=.15)
+        L2.place(width=200, height=20, relx=0.05, rely=.2)
         E2 = tk.Entry(self, bd =2)
-        E2.place (relwidth=0.45, height=20, relx=0.35, rely=.15)
+        E2.place (relwidth=0.45, height=20, relx=0.36, rely=.2)
 
 
 
         L3 = tk.Label(self, borderwidth=2, relief='sunken', text="how many images you want")
-        L3.place(width=160, height=20, relx=0.08, rely=.2)
+        L3.place(width=200, height=20, relx=0.05, rely=.3)
         E3 = tk.Entry(self, bd =2)
-        E3.place (relwidth=0.45, height=20, relx=0.35, rely=.2)
+        E3.place (relwidth=0.45, height=20, relx=0.36, rely=.3)
 
-        L4 = tk.Label(self, borderwidth=2, relief='sunken', text="folder directory (OPTIONAL)")
-        L4.place(width=160, height=20, relx=0.08, rely=.25)
+        L4 = tk.Label(self, borderwidth=2, relief='sunken', text="folder directory (optional)")
+        L4.place(width=200, height=20, relx=0.05, rely=.4)
         E4 = tk.Entry(self, bd =2)
-        E4.place (relwidth=0.45, height=20, relx=0.35, rely=.25)
+        E4.place (relwidth=0.45, height=20, relx=0.36, rely=.4)
 
         L4b = tk.Label(self, text="")
-        L4b.place(relwidth=.4, height=20, relx=.38, rely=.45)
+        L4b.place(relwidth=.75, height=20, relx=.15, rely=.55)
         L4b.config(text='leaving folder directory empty will save to the current directory')
 
-        ImgScrape = tk.Button(self, text="S\nU\nB\nM\nI\nT",padx=10, pady=5, command=lambda:[input_img_scrape()])
-        ImgScrape.place(relwidth=0.04, relheight=0.185, relx=0.9, rely=.1)
+        ImgScrape = tk.Button(self, text="E\nN\nT\nE\nR",padx=10, pady=5, command=lambda:[input_img_scrape()])
+        ImgScrape.place(relwidth=0.04, relheight=0.36, relx=0.9, rely=.1)
 
         ImgScrapeClr = tk.Button(self, text="C\nL\nE\nA\nR",padx=10, pady=5, command=lambda:[clr_img_scrape()])
-        ImgScrapeClr.place(relwidth=0.04, relheight=0.185, relx=0.85, rely=.1)
+        ImgScrapeClr.place(relwidth=0.04, relheight=0.36, relx=0.85, rely=.1)
 
-        #TABLE SCRAPER BELOW ---------------------------------------------
-
-        TableLabel = tk.Label(self, text="DATATABLE SCRAPER")
-        TableLabel.place(width=145, height=20, relx=0.5, rely=.7)
-
-        L5 = tk.Label(self, borderwidth=2, relief='sunken', text="enter name for datatable")
-        L5.place(width=160, height=20, relx=0.08, rely=.75)
-        E5 = tk.Entry(self, bd =2)
-        E5.place (relwidth=0.45, height=20, relx=0.35, rely=.75)
-
-        L6 = tk.Label(self, borderwidth=2, relief='sunken', text="enter wikipedia url here")
-        L6.place(width=160, height=20, relx=0.08, rely=.8)
-        E6 = tk.Entry(self, bd =2)
-        E6.place (relwidth=0.45, height=20, relx=0.35, rely=.8)
-
-        L7 = tk.Label(self, borderwidth=2, relief='sunken', text="folder directory (OPTIONAL)")
-        L7.place(width=160, height=20, relx=0.08, rely=.85)
-        E7 = tk.Entry(self, bd =2)
-        E7.place (relwidth=0.45, height=20, relx=0.35, rely=.85)
-
-        var = tk.IntVar()
-        R1 = tk.Radiobutton(self, text="CSV", variable=var, value=0)
-        R1.place(relx=0.37, rely=.9)
-
-        R2 = tk.Radiobutton(self, text="JSON", variable=var, value=1)
-        R2.place(relx=0.55, rely=.9)
-
-        R3 = tk.Radiobutton(self, text="HTML", variable=var, value=2)
-        R3.place(relx=0.7, rely=.9)
-
-        TableScrape = tk.Button(self, text="S\nU\nB\nM\nI\nT",padx=10, pady=5, command=lambda:[input_table_scrape()])
-        TableScrape.place(relwidth=0.04, relheight=0.185, relx=0.9, rely=.73)
-
-        TableScrapeClr = tk.Button(self, text="C\nL\nE\nA\nR",padx=10, pady=5, command=lambda:[clr_table_scrape()])
-        TableScrapeClr.place(relwidth=0.04, relheight=0.185, relx=0.85, rely=.73)
-
+       
         def input_img_scrape():
 
             test_path = E1.get()
@@ -141,41 +106,10 @@ class Page3(Page):
 
             urlarray(urlArr)
 
-        def input_table_scrape():
-            name = E5.get()
-            url = E6.get()
-            if(E7.get() != ''):
-                os.chdir(E7.get())     
-
-            if(name or url == ''):
-                L4b.config(text="you haven't input any data")    
-
-
-            html_content = requests.get(url).text
-            soup = BeautifulSoup(html_content, 'lxml')
-
-            ctr_table = soup.findAll('table', class_='wikitable', limit= 3)
-            dflist = pd.read_html(str(ctr_table))
-            df = pd.DataFrame(dflist[0])
-            #print(df.head(10))
-            if(var.get() == 0):
-                df.to_csv(f'{name}.csv')
-            if(var.get() == 1):
-                df.to_json(f'{name}.json', orient="split")
-            if(var.get() == 2):
-                df.to_html(f'{name}.html')
-
-            L4b.config(text='saved table at ' + os.sep.join(os.path.normpath(os.getcwd()).split(os.sep)[-3:]))
-
         def clr_img_scrape():
             E1.delete(0, 'end')
             E2.delete(0, 'end')
             E3.delete(0, 'end')
-
-        def clr_table_scrape():
-            E5.delete(0, 'end')
-            E6.delete(0, 'end')
-            E7.delete(0, 'end')
 
         def handle_click(event):
             print("clicked!")

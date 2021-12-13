@@ -1,7 +1,7 @@
 import tkinter as tk
 from page import Page
 
-class Page4(Page):
+class Page5(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
 

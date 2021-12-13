@@ -7,6 +7,7 @@ import threading
 from datetime import datetime
 import requests
 import pygame
+import platform
 
 class Page2(Page):
     def __init__(self, *args, **kwargs):
@@ -26,12 +27,18 @@ class Page2(Page):
             csvthread.daemon = True
             csvthread.start()
             urls.append(name)
-
+            response = requests.get('https://' + f'{name}')
             # listvar.set(urls)
             for url in urls:
-                Lb1.insert(0, url)    
+                urllist.insert(0, url)    
+        def getUrl2():
+            # name = str(e1.get().strip())
+            csvthread= threading.Thread(target=pingUrl, args=(1,))
+            csvthread.daemon = True
+            csvthread.start()
 
         def logCSV(name):
+            print(platform.system())
             name = str(e1.get().strip())
             response = requests.get('https://' + f'{name}')
             status_code = int(response.status_code)
@@ -45,37 +52,66 @@ class Page2(Page):
             starttime=time.time() 
             e1.delete(0, "end")
             # e2.delete(0, "end")
-            while(True):       
-                output = sp.getoutput(f'ping -n 3 {namecache} | find "Packets"')
-                # print (output)
-                packetsent = output[20:21]
-                packetreceived = output[34:35]
-                packetloss = output[44:45]
-                print(status_code)
+            while(True):   
+                if(platform.system() == "Windows"):
+                    output = sp.getoutput(f'ping -n 3 {namecache} | find "Packets"')
+                    packetsent = output[20:21]
+                    packetreceived = output[34:35]
+                    packetloss = output[44:45]
+                    print(status_code)
+                if(platform.system() == "Linux"):
+                    output = sp.getoutput(f'ping -c 3 -q {namecache} | tail -n +4')
+                    packetsent = int(output[0:1])
+                    packetreceived = int(output[23:24])
+                    packetloss = packetsent - packetreceived
+                    print(packetsent)
+                    print(packetloss)
+                    print(status_code)
 
                 if(packetsent == packetreceived):
-                    status= "UP"
-                if(packetsent == packetloss):
-                    status="DOWN"
-                    pygame.mixer.init()
-                    pygame.mixer.music.load("alarm16bit.wav")
-                    pygame.mixer.music.play()
+                    status= "GOOD"
+                if(packetsent != packetreceived):
+                    status="ERROR"
                 if(status_code == int(503)):
                     status="503"
                     pygame.mixer.init()
                     pygame.mixer.music.load("alarm16bit.wav")
                     pygame.mixer.music.play()
-                if(packetsent != packetreceived):
-                    status="ERROR"
 
                 with open(f'{namecache}-PingTest{titletime}.csv', 'a', newline="") as f:
                     writef = csv.writer(f)
                     t = time.localtime()
                     current_time = time.strftime("%H:%M:%S", t)
 
-                    writef.writerow([current_time] + [packetsent] + [packetreceived] + [packetloss] + [status])
+                    writef.writerow([current_time] + [packetsent] + [packetreceived] + [status])
 
                     time.sleep(intervalcache - ((time.time() - starttime) % intervalcache))
+        def pingUrl(name):
+            statuses=[]
+            urls=[]
+            name = str(e1.get().strip())
+            interval = int(dropdownoptions[dropdownlist.get()])
+            namecache = name
+            intervalcache = interval
+            now = datetime.now()
+            titletime= datetime.date(now).strftime("%Y%m%d")
+            starttime=time.time() 
+            response = requests.get('https://' + f'{name}')
+            urls.append(name)
+            status_code = int(response.status_code)
+            statuses.append(status_code)
+            print(urls)
+
+            for url in urls:
+                urllist.insert(0, url)  
+            for status in statuses:
+                statuslist.insert(0, status)
+            while(True):
+                status_code = response.status_code
+                print(status_code)
+                statuses[0] == status_code
+                time.sleep(intervalcache - ((time.time() - starttime) % intervalcache))
+
 
         # lbl5=tk.Label(self, text="MULTITHREADED PAGE PINGER", fg='red', font=("Helvetica", 14))
         # lbl5.pack(side="top", ipady=30)
@@ -103,11 +139,19 @@ class Page2(Page):
         dropdown = tk.OptionMenu(self, dropdownlist, *dropdownoptions)
         dropdown.pack(ipadx=30, padx=20, ipady=4, pady=3, side='top', anchor='nw')
 
-        # e2=Entry(window, bd=5)
-        # e2.pack(ipadx=30, padx=20, ipady=4, pady=3, side=TOP, anchor=NW)
+        
+        frame1 = tk.Frame(self, bg='green', width=25, height=25)
+        frame1.place(relx=0.83, rely=.025)
+        frame2 = tk.Frame(self, bg='blue', width=25, height=25)
+        frame2.place(relx=0.83, rely=.035)
 
-        Lb1 = tk.Listbox(self)
-        Lb1.place(relx=0.67, rely=.05, relheight=0.8, relwidth=0.3)
 
-        Start = tk.Button(self,bg='#3F3F3F', fg='white', text="START", pady=0, borderwidth=3, relief="ridge", command=lambda:[getUrl()])
-        Start.place(relx=0.02, rely=0.70, relwidth=0.6, height=35)
+        urllist = tk.Listbox(self)
+        urllist.place(relx=0.67, rely=.025, relheight=0.83, relwidth=0.2)
+        statuslist = tk.Listbox(self)
+        statuslist.place(relx=0.88, rely=.025, relheight=0.83, relwidth=0.07)
+
+        StartLog = tk.Button(self,bg='#3F3F3F', fg='white', text="START AND LOG CSV", pady=0, borderwidth=3, relief="ridge", command=lambda:[getUrl()])
+        StartLog.place(relx=0.02, rely=0.70, relwidth=0.35, height=35)
+        Start = tk.Button(self,bg='#3F3F3F', fg='white', text="START", pady=0, borderwidth=3, relief="ridge", command=lambda:[getUrl2()])
+        Start.place(relx=0.42, rely=0.70, relwidth=0.2, height=35)
