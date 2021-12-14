@@ -18,42 +18,42 @@ from page import Page
 class Page3(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
-
+        self.configure(bg="#555555")
         ImgLabel = tk.Label(self, text="IMAGE SCRAPER")
         ImgLabel.place(width=145, height=20, relx=0.45, rely=.025)
 
         L1 = tk.Label(self, borderwidth=2, relief='sunken', text="enter name for local folder")
-        L1.place(width=200, height=20, relx=0.05, rely=.1)
+        L1.place(width=180, height=20, relx=0.05, rely=.15)
         E1 = tk.Entry(self, bd =2)
-        E1.place (relwidth=0.45, height=20, relx=0.36, rely=.1)
+        E1.place (relwidth=0.45, height=20, relx=0.36, rely=.15)
 
 
         L2 = tk.Label(self, borderwidth=2, relief='sunken', text="enter wikipedia url here")
-        L2.place(width=200, height=20, relx=0.05, rely=.2)
+        L2.place(width=180, height=20, relx=0.05, rely=.25)
         E2 = tk.Entry(self, bd =2)
-        E2.place (relwidth=0.45, height=20, relx=0.36, rely=.2)
+        E2.place (relwidth=0.45, height=20, relx=0.36, rely=.25)
 
 
 
         L3 = tk.Label(self, borderwidth=2, relief='sunken', text="how many images you want")
-        L3.place(width=200, height=20, relx=0.05, rely=.3)
+        L3.place(width=180, height=20, relx=0.05, rely=.35)
         E3 = tk.Entry(self, bd =2)
-        E3.place (relwidth=0.45, height=20, relx=0.36, rely=.3)
+        E3.place (relwidth=0.45, height=20, relx=0.36, rely=.35)
 
         L4 = tk.Label(self, borderwidth=2, relief='sunken', text="folder directory (optional)")
-        L4.place(width=200, height=20, relx=0.05, rely=.4)
+        L4.place(width=180, height=20, relx=0.05, rely=.45)
         E4 = tk.Entry(self, bd =2)
-        E4.place (relwidth=0.45, height=20, relx=0.36, rely=.4)
+        E4.place (relwidth=0.45, height=20, relx=0.36, rely=.45)
 
         L4b = tk.Label(self, text="")
-        L4b.place(relwidth=.75, height=20, relx=.15, rely=.55)
+        L4b.place(relwidth=.75, height=20, relx=.15, rely=.6)
         L4b.config(text='leaving folder directory empty will save to the current directory')
 
         ImgScrape = tk.Button(self, text="E\nN\nT\nE\nR",padx=10, pady=5, command=lambda:[input_img_scrape()])
-        ImgScrape.place(relwidth=0.04, relheight=0.36, relx=0.9, rely=.1)
+        ImgScrape.place(relwidth=0.04, relheight=0.36, relx=0.9, rely=.15)
 
         ImgScrapeClr = tk.Button(self, text="C\nL\nE\nA\nR",padx=10, pady=5, command=lambda:[clr_img_scrape()])
-        ImgScrapeClr.place(relwidth=0.04, relheight=0.36, relx=0.85, rely=.1)
+        ImgScrapeClr.place(relwidth=0.04, relheight=0.36, relx=0.85, rely=.15)
 
        
         def input_img_scrape():

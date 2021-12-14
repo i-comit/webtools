@@ -9,10 +9,11 @@ import requests
 import pygame
 import platform
 
+
 class Page2(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
-
+        self.configure(bg="#555555")
         def getUrl():
             urls=[]
             name = str(e1.get().strip())
@@ -112,15 +113,14 @@ class Page2(Page):
                 statuses[0] == status_code
                 time.sleep(intervalcache - ((time.time() - starttime) % intervalcache))
 
-
         # lbl5=tk.Label(self, text="MULTITHREADED PAGE PINGER", fg='red', font=("Helvetica", 14))
         # lbl5.pack(side="top", ipady=30)
         l1= tk.Label(self, text="Enter Website URL Here \n\n\nEnter Time Interval Here",  fg='black', font=("Verdana", 9))
-        l1.pack(ipadx=0, padx=10, ipady=4, pady=3, side='left', anchor='ne')
+        l1.pack(ipadx=5, padx=15, ipady=10, pady=15, side='left', anchor='ne')
         # lbl1 = tk.Label(self, text="helo world", fg='black', font=("Verdana", 9))
         # lbl1.place(x= 150, y=190, width=300, height=30)
-        e1=tk.Entry(self, bd=5, width=18)
-        e1.pack(ipadx=30, padx=20, ipady=4, pady=3, side='top', anchor='nw')
+        e1=tk.Entry(self, bd=1, width=18)
+        e1.pack(ipadx=20, padx=10, ipady=5, pady=15, side='top', anchor='nw')
 
         dropdownlist = tk.StringVar(self)
         dropdownoptions = {
@@ -137,21 +137,14 @@ class Page2(Page):
         dropdownlist.set('Every 5 Seconds') # set the default option
 
         dropdown = tk.OptionMenu(self, dropdownlist, *dropdownoptions)
-        dropdown.pack(ipadx=30, padx=20, ipady=4, pady=3, side='top', anchor='nw')
-
-        
-        frame1 = tk.Frame(self, bg='green', width=25, height=25)
-        frame1.place(relx=0.83, rely=.025)
-        frame2 = tk.Frame(self, bg='blue', width=25, height=25)
-        frame2.place(relx=0.83, rely=.035)
-
+        dropdown.pack(ipadx=20, padx=10, ipady=1, pady=1 ,side='top', anchor='nw')
 
         urllist = tk.Listbox(self)
-        urllist.place(relx=0.67, rely=.025, relheight=0.83, relwidth=0.2)
+        urllist.place(relx=0.68, rely=.06, relheight=0.83, relwidth=0.2)
         statuslist = tk.Listbox(self)
-        statuslist.place(relx=0.88, rely=.025, relheight=0.83, relwidth=0.07)
+        statuslist.place(relx=0.9, rely=.06, relheight=0.83, relwidth=0.07)
 
         StartLog = tk.Button(self,bg='#3F3F3F', fg='white', text="START AND LOG CSV", pady=0, borderwidth=3, relief="ridge", command=lambda:[getUrl()])
-        StartLog.place(relx=0.02, rely=0.70, relwidth=0.35, height=35)
+        StartLog.place(relx=0.02, rely=0.75, relwidth=0.35, height=35)
         Start = tk.Button(self,bg='#3F3F3F', fg='white', text="START", pady=0, borderwidth=3, relief="ridge", command=lambda:[getUrl2()])
-        Start.place(relx=0.42, rely=0.70, relwidth=0.2, height=35)
+        Start.place(relx=0.41, rely=0.75, relwidth=0.24, height=35)

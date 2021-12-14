@@ -18,46 +18,46 @@ from page import Page
 class Page4(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
-
+        self.configure(bg="#555555")
         TableLabel = tk.Label(self, text="TABLE SCRAPER")
         TableLabel.place(width=145, height=20, relx=0.45, rely=.025)
 
         L4b = tk.Label(self, text="")
-        L4b.place(relwidth=.75, height=20, relx=.15, rely=.55)
+        L4b.place(relwidth=.75, height=20, relx=.15, rely=.6)
         L4b.config(text='leaving folder directory empty will save to the current directory')
 
         #TABLE SCRAPER BELOW ---------------------------------------------
 
         L5 = tk.Label(self, borderwidth=2, relief='sunken', text="enter name for datatable")
-        L5.place(width=200, height=20, relx=0.05, rely=.1)
+        L5.place(width=180, height=20, relx=0.05, rely=.15)
         E5 = tk.Entry(self, bd =2)
-        E5.place (relwidth=0.45, height=20, relx=0.36, rely=.1)
+        E5.place (relwidth=0.45, height=20, relx=0.36, rely=.15)
 
         L6 = tk.Label(self, borderwidth=2, relief='sunken', text="enter wikipedia url here")
-        L6.place(width=200, height=20, relx=0.05, rely=.2)
+        L6.place(width=180, height=20, relx=0.05, rely=.25)
         E6 = tk.Entry(self, bd =2)
-        E6.place (relwidth=0.45, height=20, relx=0.36, rely=.2)
+        E6.place (relwidth=0.45, height=20, relx=0.36, rely=.25)
 
-        L7 = tk.Label(self, borderwidth=2, relief='sunken', text="folder directory (OPTIONAL)")
-        L7.place(width=200, height=20, relx=0.05, rely=.3)
+        L7 = tk.Label(self, borderwidth=2, relief='sunken', text="folder directory (optional)")
+        L7.place(width=180, height=20, relx=0.05, rely=.35)
         E7 = tk.Entry(self, bd =2)
-        E7.place (relwidth=0.45, height=20, relx=0.36, rely=.3)
+        E7.place (relwidth=0.45, height=20, relx=0.36, rely=.35)
 
         var = tk.IntVar()
         R1 = tk.Radiobutton(self, text="CSV", variable=var, value=0)
-        R1.place(relx=0.37, rely=.4)
+        R1.place(relx=0.38, rely=.45)
 
         R2 = tk.Radiobutton(self, text="JSON", variable=var, value=1)
-        R2.place(relx=0.55, rely=.4)
+        R2.place(relx=0.52, rely=.45)
 
         R3 = tk.Radiobutton(self, text="HTML", variable=var, value=2)
-        R3.place(relx=0.7, rely=.4)
+        R3.place(relx=0.68, rely=.45)
 
         TableScrape = tk.Button(self, text="E\nN\nT\nE\nR",padx=10, pady=5, command=lambda:[input_table_scrape()])
-        TableScrape.place(relwidth=0.04, relheight=0.36, relx=0.9, rely=.1)
+        TableScrape.place(relwidth=0.04, relheight=0.36, relx=0.9, rely=.15)
 
         TableScrapeClr = tk.Button(self, text="C\nL\nE\nA\nR",padx=10, pady=5, command=lambda:[clr_table_scrape()])
-        TableScrapeClr.place(relwidth=0.04, relheight=0.36, relx=0.85, rely=.1)
+        TableScrapeClr.place(relwidth=0.04, relheight=0.36, relx=0.85, rely=.15)
 
         def input_table_scrape():
             name = E5.get()

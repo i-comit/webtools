@@ -1,5 +1,5 @@
 import tkinter as tk
-from pagequeri import Page1
+from datadeni import Page1
 from autoping import Page2
 from imgscraper import Page3
 from tablescraper import Page4
@@ -25,7 +25,7 @@ class MainView(tk.Frame):
         p4.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         p5.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
 
-        b1 = tk.Button(buttonframe, text="WEBPAGE QUERY", command=p1.lift)
+        b1 = tk.Button(buttonframe, text="DATADENI", command=p1.lift)
         b2 = tk.Button(buttonframe, text="WEBPAGE PINGER", command=p2.lift)
         b3 = tk.Button(buttonframe, text="IMAGE SCRAPER", command=p3.lift)
         b4 = tk.Button(buttonframe, text="TABLE SCRAPER", command=p4.lift)
@@ -42,7 +42,7 @@ if __name__ == "__main__":
     main = MainView(root)
     root.wm_title("MULTIPLATFORM PYTHON WEB TOOLS")
     main.pack(side="top", fill="both", expand=True)
-    root.wm_geometry("650x300")
-    root.wm_minsize(width=650, height=300)
-    root.wm_maxsize(width=650, height=300)
+    root.wm_geometry("600x300")
+    root.wm_minsize(width=600, height=300)
+    root.wm_maxsize(width=600, height=300)
     root.mainloop()
