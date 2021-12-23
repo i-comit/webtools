@@ -431,49 +431,49 @@ class Page1(Page):
         Chk1.config(height = 8, width = 8)
         Chk1.place(relx=.65, rely = .62)
 
+        OpenPath = tk.Button(self,bg='#3F3F3F', text="CHOOSE PATH", fg='#37D028',borderwidth=3, width=12, height= 2, relief="ridge", command=lambda:getFolderPath())
+        OpenPath.place(relx=.4, rely = .2)
+
         unhideimg = tk.PhotoImage(file ="unhideimg.png")
         unhidess = unhideimg.subsample(6,6)
         Chk2 = tk.Button(self, bg='#3F3F3F', fg='#37D028', padx=10, pady=5, borderwidth=3, relief="ridge",command=lambda:[unhideFolder(),ButtonChk(2)])
         Chk2.config(height = 8, width = 8)
         Chk2.place(relx=.65, rely = .82)
 
-        lockimg = tk.PhotoImage(file ="lockimg.png")
-        lockss = lockimg.subsample(6,6)
-        Chk1n = tk.Button(self, bg='#3F3F3F', fg='#37D028',padx=10, pady=5, borderwidth=3, relief="ridge",command=lambda:[thread.start(),ButtonChk(3)])
-        Chk1n.config(height = 8, width = 8)
+        # lockimg = tk.PhotoImage(file ="lockimg.png")
+        # lockss = lockimg.subsample(6,6)
+        Chk1n = tk.Button(self, bg='#3F3F3F', text="ENCRYPT", fg='#37D028',padx=10, pady=5, borderwidth=3, width=8, height=2, relief="ridge",command=lambda:[thread.start(),ButtonChk(3)])
         Chk1n.place(relx=.4, rely = .62)
 
-        unlockimg = tk.PhotoImage(file ="unlockimg.png")
-        unlockss = unlockimg.subsample(6,6)
-        Chk3 = tk.Button(self, bg='#3F3F3F', fg='#37D028',padx=10, pady=5, borderwidth=3, relief="ridge", command=lambda:[thread1.start(),ButtonChk(4)])
-        Chk3.config(height = 32, width = 32)
+        # unlockimg = tk.PhotoImage(file ="unlockimg.png")
+        # unlockss = unlockimg.subsample(6,6)
+        Chk3 = tk.Button(self, bg='#3F3F3F', text="DECRYPT", fg='#37D028',padx=10, pady=5, borderwidth=3, relief="ridge", width=8, height=2, command=lambda:[thread1.start(),ButtonChk(4)])
         Chk3.place(relx=.4, rely = .82)
 
-        # def getFolderPath():
-        #     dirArray = []
-        #     if not dirArray:
-        #         dirArray.clear()
-        #     folder_selected = filedialog.askdirectory()
-        #     folders.set(folder_selected)
-        #     sourcePath = folders.get()
-        #     os.chdir(sourcePath)
-        #     directory_contents = os.listdir(folder_selected)
-        #     for item in directory_contents:
-        #         if os.path.isdir(item) and (len(item) < 20):
-        #             dirArray.append(item)
-        #             # if(len(item) > 10):
-        #             #     concatitem = item[10:] + '..'
-        #     for f in directory_contents:
-        #         if f.startswith(('__','lib', 'foldercache')):
-        #             dirArray.remove(f)
-        #     return dirArray
+        def getFolderPath():
+            dirArray = []
+            if not dirArray:
+                dirArray.clear()
+            folder_selected = filedialog.askdirectory()
+            folders.set(folder_selected)
+            sourcePath = folders.get()
+            os.chdir(sourcePath)
+            directory_contents = os.listdir(folder_selected)
+            for item in directory_contents:
+                if os.path.isdir(item) and (len(item) < 20):
+                    dirArray.append(item)
+                    # if(len(item) > 10):
+                    #     concatitem = item[10:] + '..'
+            for f in directory_contents:
+                if f.startswith(('__','lib', 'foldercache')):
+                    dirArray.remove(f)
+            return dirArray
 
         folders = StringVar(self)
-        # dirArrayList = getFolderPath()
-        # OM1 = tk.OptionMenu(self, folders, *dirArrayList)
-        # OM1["menu"].config(bg='#3F3F3F', fg='#ffffff')
-        # OM1.config(bg='#3F3F3F', fg='#ffffff')
-        # OM1.place(relx=.4, rely = .02, relwidth=0.36, height= 36)
+        OM1 = tk.OptionMenu(self, folders, folders)
+        OM1["menu"].config(bg='#3F3F3F', fg='#ffffff')
+        OM1.config(bg='#3F3F3F', fg='#ffffff')
+        OM1.place(relx=.4, rely = .02, relwidth=0.36, height= 36)
         folders.set('') 
 
         E1 = tk.Entry(self,bg='#3F3F3F', fg='#37D028',bd =2, validate="key", textvariable=var, validatecommand=(validation, '%S'))
