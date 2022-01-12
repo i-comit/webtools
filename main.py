@@ -40,6 +40,7 @@ class MainView(tk.Frame):
 if __name__ == "__main__":
     root = tk.Tk()
     main = MainView(root)
+    root.iconbitmap('favicon.ico')
     root.wm_title("MULTIPLATFORM PYTHON WEB TOOLS")
     main.pack(side="top", fill="both", expand=True)
     root.wm_geometry("550x300")

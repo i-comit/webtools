@@ -1,14 +1,11 @@
 import tkinter as tk
 from page import Page
 from selenium import webdriver
-from seleniumrequests import Chrome
 import platform
 from tkinter import filedialog
 from PIL import ImageTk, Image 
 import os
 from selenium.webdriver.common.keys import Keys
-import requests
-import webbrowser
 
 class Page1(Page):
     def __init__(self, *args, **kwargs):
@@ -18,12 +15,9 @@ class Page1(Page):
         label.place(width=145, height=20, relx=0.4, rely=.025)
         # listbox = tk.Listbox(self, width="43", height="12")
         # listbox.place(relx=0.43, rely=0.05)
-        btn1 = tk.Button(self,bg='red', fg='white', text="CHOOSE IMAGE", pady=0, borderwidth=3, relief="ridge", command=lambda:[chooseImg()])
-        btn1.place(relx=0.12, rely=0.2)
-        btn2 = tk.Button(self,bg='red', fg='white', text="RUN SEARCH", pady=0, borderwidth=3, relief="ridge", command=lambda:[queryWebsite()])
-
-
-        x = ""
+        btn1 = tk.Button(self,bg='#3F3F3F', fg='white', text="CHOOSE IMAGE", pady=0, borderwidth=3, relief="ridge", command=lambda:[chooseImg()])
+        btn1.place(relx=0.025, rely=0.025, relwidth=0.28, height=35)
+        btn2 = tk.Button(self,bg='#3F3F3F', fg='white',  text="RUN SEARCH", pady=0, borderwidth=3, relief="ridge", command=lambda:[queryWebsite()])
 
         def chooseImg():
             filetypes = (
@@ -42,7 +36,7 @@ class Page1(Page):
             imgpanel =tk.Label(self, image = img, bd=1)
             imgpanel.image = img
             imgpanel.place(relx=0.7, rely=0.35)
-            btn2.place(relx=0.75, rely=0.2)
+            btn2.place(relx=0.7, rely=0.025, relwidth=0.28, height=35)
 
         def queryWebsite():
             PATH = ""
