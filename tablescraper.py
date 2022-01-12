@@ -20,10 +20,10 @@ class Page4(Page):
         Page.__init__(self, *args, **kwargs)
         self.configure(bg="#555555")
         TableLabel = tk.Label(self, text="TABLE SCRAPER")
-        TableLabel.place(width=145, height=20, relx=0.45, rely=.025)
+        TableLabel.place(width=145, height=20, relx=0.4, rely=.025)
 
         L4b = tk.Label(self, text="")
-        L4b.place(relwidth=.75, height=20, relx=.15, rely=.6)
+        L4b.place(relwidth=.75, height=20, relx=.12, rely=.6)
         L4b.config(text='leaving folder directory empty will save to the current directory')
 
         #TABLE SCRAPER BELOW ---------------------------------------------

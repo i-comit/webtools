@@ -20,7 +20,7 @@ class Page3(Page):
         Page.__init__(self, *args, **kwargs)
         self.configure(bg="#555555")
         ImgLabel = tk.Label(self, text="IMAGE SCRAPER")
-        ImgLabel.place(width=145, height=20, relx=0.45, rely=.025)
+        ImgLabel.place(width=145, height=20, relx=0.4, rely=.025)
 
         L1 = tk.Label(self, borderwidth=2, relief='sunken', text="enter name for local folder")
         L1.place(width=180, height=20, relx=0.05, rely=.15)
@@ -46,7 +46,7 @@ class Page3(Page):
         E4.place (relwidth=0.45, height=20, relx=0.36, rely=.45)
 
         L4b = tk.Label(self, text="")
-        L4b.place(relwidth=.75, height=20, relx=.15, rely=.6)
+        L4b.place(relwidth=.75, height=20, relx=.12, rely=.6)
         L4b.config(text='leaving folder directory empty will save to the current directory')
 
         ImgScrape = tk.Button(self, text="E\nN\nT\nE\nR",padx=10, pady=5, command=lambda:[input_img_scrape()])

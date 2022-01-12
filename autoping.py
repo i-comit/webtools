@@ -14,6 +14,9 @@ class Page2(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
         self.configure(bg="#555555")
+
+        TitleLabel = tk.Label(self, text="AUTO PING")
+        TitleLabel.place(width=145, height=20, relx=0.4, rely=.025)
         def getUrl():
             urls=[]
             name = str(e1.get().strip())
@@ -116,11 +119,11 @@ class Page2(Page):
         # lbl5=tk.Label(self, text="MULTITHREADED PAGE PINGER", fg='red', font=("Helvetica", 14))
         # lbl5.pack(side="top", ipady=30)
         l1= tk.Label(self, text="Enter Website URL Here \n\n\nEnter Time Interval Here",  fg='black', font=("Verdana", 9))
-        l1.pack(ipadx=5, padx=15, ipady=10, pady=15, side='left', anchor='ne')
+        l1.place(width=160, height=60, relx=0.04, rely=.2)
         # lbl1 = tk.Label(self, text="helo world", fg='black', font=("Verdana", 9))
         # lbl1.place(x= 150, y=190, width=300, height=30)
         e1=tk.Entry(self, bd=1, width=18)
-        e1.pack(ipadx=20, padx=10, ipady=5, pady=15, side='top', anchor='nw')
+        e1.place(width=145, height=25, relx=0.4, rely=.2)
 
         dropdownlist = tk.StringVar(self)
         dropdownoptions = {
@@ -137,12 +140,12 @@ class Page2(Page):
         dropdownlist.set('Every 5 Seconds') # set the default option
 
         dropdown = tk.OptionMenu(self, dropdownlist, *dropdownoptions)
-        dropdown.pack(ipadx=20, padx=10, ipady=1, pady=1 ,side='top', anchor='nw')
+        dropdown.place(width=145, height=25, relx=0.4, rely=.34)
 
         urllist = tk.Listbox(self)
-        urllist.place(relx=0.68, rely=.06, relheight=0.83, relwidth=0.2)
+        urllist.place(relx=0.7, rely=.2, relheight=0.68, relwidth=0.2)
         statuslist = tk.Listbox(self)
-        statuslist.place(relx=0.9, rely=.06, relheight=0.83, relwidth=0.07)
+        statuslist.place(relx=0.92, rely=.2, relheight=0.68, relwidth=0.06)
 
         StartLog = tk.Button(self,bg='#3F3F3F', fg='white', text="START AND LOG CSV", pady=0, borderwidth=3, relief="ridge", command=lambda:[getUrl()])
         StartLog.place(relx=0.02, rely=0.75, relwidth=0.35, height=35)
