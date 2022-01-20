@@ -22,7 +22,7 @@ class Page3(Page):
         ImgLabel = tk.Label(self, text="IMAGE SCRAPER")
         ImgLabel.place(width=145, height=20, relx=0.4, rely=.025)
 
-        L1 = tk.Label(self, borderwidth=2, relief='sunken', text="enter name for local folder")
+        L1 = tk.Label(self, borderwidth=2, relief='sunken', text="enter name of img folder")
         L1.place(width=180, height=20, relx=0.05, rely=.15)
         E1 = tk.Entry(self, bd =2)
         E1.place (relwidth=0.45, height=20, relx=0.36, rely=.15)
