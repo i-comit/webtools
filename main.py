@@ -4,6 +4,8 @@ from autoping import Page2
 from imgscraper import Page3
 from tablescraper import Page4
 from about import Page5
+import platform
+import os
 
 class MainView(tk.Frame):
     def __init__(self, *args, **kwargs):
@@ -40,9 +42,13 @@ class MainView(tk.Frame):
 if __name__ == "__main__":
     root = tk.Tk()
     main = MainView(root)
-    root.iconbitmap('favicon.ico')
+    if(platform.system() == "Windows"):
+        root.iconbitmap('favicon.ico')
+        root.wm_geometry("550x300")
+    else:
+        root.wm_geometry("600x300")
+
     root.wm_title("MULTIPLATFORM PYTHON WEB TOOLS")
     main.pack(side="top", fill="both", expand=True)
-    root.wm_geometry("550x300")
     root.resizable(False, False) 
     root.mainloop()

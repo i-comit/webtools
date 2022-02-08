@@ -5,7 +5,6 @@ import platform
 from tkinter import filedialog
 from PIL import ImageTk, Image 
 import os
-from selenium.webdriver.common.keys import Keys
 
 class Page1(Page):
     def __init__(self, *args, **kwargs):
@@ -43,13 +42,14 @@ class Page1(Page):
             print(platform.system())
             if(platform.system() == "Windows"):
                 PATH = "./chromedriver.exe"
-                print(os.getcwd())
             if(platform.system() == "Linux"):
-                PATH = "./chromedriver"
+                os.chmod(os.getcwd() + "/chromedriver", 0o0755)
+                PATH = os.getcwd() + "/chromedriver"
+
             print(PATH)
             driver = webdriver.Chrome(PATH)
-
-            # driver.get(chooseImg.img)
+            options = webdriver.ChromeOptions()
+            options.add_experimental_option("detach", True)
             # driver.get("http://www.google.hr/searchbyimage/upload")
 
             # elem = driver.find_element_by_name('q')
