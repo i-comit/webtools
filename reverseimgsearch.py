@@ -51,8 +51,7 @@ class Page1(Page):
             options = webdriver.ChromeOptions()
             options.add_experimental_option("detach", True)
             # driver.get("http://www.google.hr/searchbyimage/upload")
-
-            # elem = driver.find_element_by_name('q')
+            driver = webdriver.Chrome(options=options, executable_path=PATH)
    
             # elem.send_keys(Keys.ENTER)
 
